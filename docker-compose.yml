@@ -2,7 +2,7 @@ mosquitto:
   image: ansi/mosquitto
   ports:
     - "1883:1883"
-legofusion:
+virtualizationlayer:
   image: glagnar/virtualizationlayer:latest
   links:
     - mosquitto
