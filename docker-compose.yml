@@ -2,11 +2,19 @@ mosquitto:
   image: ansi/mosquitto
   ports:
     - "1883:1883"
+datafusionmanager:
+  image: glagnar/datafusionmanager:latest
+  links:
+    - mosquitto
+  ports:
+    - "8319:8319"
 virtualizationlayer:
   image: glagnar/virtualizationlayer:latest
   links:
     - mosquitto
+    - datafusionmanager
   ports:
     - "80:80"
   environment:
     - MQTT_BROKER_URL=mqtt://mosquitto
+    - DFM_URL=http://datafusionmanager:8319
