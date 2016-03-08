@@ -8,6 +8,8 @@ datafusionmanager:
     - mosquitto
   ports:
     - "8319:8319"
+  volumes:
+    - /almanac/dfm:/config
 virtualizationlayer:
   image: glagnar/virtualizationlayer:latest
   links:
