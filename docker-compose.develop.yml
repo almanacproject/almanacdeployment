@@ -1,9 +1,6 @@
-datafusionmanager:
-  volumes:
-    - /almanac/dfm:/config
 virtualizationlayer:
   environment:
     - STORAGE_MANAGER_URL=http://storagemanager.smat.federation2.almanac-project.eu/SensorThings/
     - NETWORK_MANAGER_URL=http://almanac.alexandra.dk:8000
     - RESOURCE_CATALOGUE_URL=http://almanac.alexandra.dk:44441
-    - VL_PUBLIC_URL=http://almanac-lab.alexandra.dk
+    - VL_PUBLIC_URL=http://almanac-lab.alexandra.dk:8080
