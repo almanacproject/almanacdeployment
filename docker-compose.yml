@@ -10,14 +10,23 @@ datafusionmanager:
     - "8319:8319"
   volumes:
     - /almanac/dfm:/config
+scral:
+  image: glagnar/scral:latest
+  links:
+    - mosquitto
+  ports:
+    - "8080:8080"
+  volumes:
+    - /almanac/scral/applicationContext-pwal.xml:/usr/local/tomcat/webapps/scral/WEB-INF/classes/applicationContext-pwal.xml
 virtualizationlayer:
   image: glagnar/virtualizationlayer:latest
   links:
     - mosquitto
     - datafusionmanager
   ports:
-    - "8080:80"
+    - "80:80"
   environment:
     - MQTT_BROKER_URL=mqtt://mosquitto
     - VL_PUBLIC_URL=http://almanac-lab.alexandra.dk
     - DFM_URL=http://datafusionmanager:8319
+    - SCRAL_URL=http://scral:8080/scral
