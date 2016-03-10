@@ -22,6 +22,8 @@ resourcecatalogue:
   image: glagnar/resourcecatalogue:latest
   ports:
     - "44441:44441"
+  links:
+    - mosquitto
   volumes:
     - /almanac/resourcecatalogue/ResourceDB:/opt/IoTResourceCatalogue/ResourceDB
     - /almanac/resourcecatalogue/ALMANAC-LAB.config:/opt/IoTResourceCatalogue/IoTResourceCatalogue.exe.config
