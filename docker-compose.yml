@@ -18,11 +18,19 @@ scral:
     - "8080:8080"
   volumes:
     - /almanac/scral/applicationContext-pwal.xml:/usr/local/tomcat/webapps/scral/WEB-INF/classes/applicationContext-pwal.xml
+resourcecatalogue:
+  image: glagnar/resourcecatalogue:latest
+  ports:
+    - "44441:44441"
+  volumes:
+    - /almanac/resourcecatalogue/ResourceDB:/opt/IoTResourceCatalogue/ResourceDB
+    - /almanac/resourcecatalogue/ALMANAC-LAB.config:/opt/IoTResourceCatalogue/IoTResourceCatalogue.exe.config
 virtualizationlayer:
   image: glagnar/virtualizationlayer:latest
   links:
     - mosquitto
     - datafusionmanager
+    - resourcecatalogue
   ports:
     - "80:80"
   environment:
@@ -30,3 +38,4 @@ virtualizationlayer:
     - VL_PUBLIC_URL=http://almanac-lab.alexandra.dk
     - DFM_URL=http://datafusionmanager:8319
     - SCRAL_URL=http://scral:8080/scral
+    - RESOURCE_CATALOGUE_URL=resourcecatalogue:44441
