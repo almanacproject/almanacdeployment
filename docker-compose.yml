@@ -9,7 +9,7 @@ datafusionmanager:
   ports:
     - "8319:8319"
   volumes:
-    - /almanac/dfm:/config
+    - /almanac/dfm/config:/config
 scral:
   image: glagnar/scral:latest
   links:
@@ -17,7 +17,7 @@ scral:
   ports:
     - "8080:8080"
   volumes:
-    - /almanac/scral/applicationContext-pwal.xml:/usr/local/tomcat/webapps/scral/WEB-INF/classes/applicationContext-pwal.xml
+    - /almanac/scral/config:/config
 resourcecatalogue:
   image: glagnar/resourcecatalogue:latest
   ports:
@@ -25,8 +25,8 @@ resourcecatalogue:
   links:
     - mosquitto
   volumes:
-    - /almanac/resourcecatalogue/ResourceDB:/opt/IoTResourceCatalogue/ResourceDB
-    - /almanac/resourcecatalogue/ALMANAC-LAB.config:/opt/IoTResourceCatalogue/IoTResourceCatalogue.exe.config
+    - /almanac/resourcecatalogue/data:/opt/IoTResourceCatalogue/ResourceDB
+    - /almanac/resourcecatalogue/config:/config
 virtualizationlayer:
   image: glagnar/virtualizationlayer:latest
   links:
