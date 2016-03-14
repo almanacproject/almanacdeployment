@@ -1,0 +1,10 @@
+datafusionmanager:
+  volumes:
+    - /almanac/dfm/config:/config
+scral:
+  volumes:
+    - /almanac/scral/config:/config
+resourcecatalogue:
+  volumes:
+    - /almanac/resourcecatalogue/data:/opt/IoTResourceCatalogue/ResourceDB
+    - /almanac/resourcecatalogue/config:/config

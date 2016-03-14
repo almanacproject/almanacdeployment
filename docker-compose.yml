@@ -8,25 +8,18 @@ datafusionmanager:
     - mosquitto
   ports:
     - "8319:8319"
-  volumes:
-    - /almanac/dfm/config:/config
 scral:
   image: glagnar/scral:latest
   links:
     - mosquitto
   ports:
     - "8081:8080"
-  volumes:
-    - /almanac/scral/config:/config
 resourcecatalogue:
   image: glagnar/resourcecatalogue:latest
   ports:
     - "44441:44441"
   links:
     - mosquitto
-  volumes:
-    - /almanac/resourcecatalogue/data:/opt/IoTResourceCatalogue/ResourceDB
-    - /almanac/resourcecatalogue/config:/config
 virtualizationlayer:
   image: glagnar/virtualizationlayer:latest
   links:
