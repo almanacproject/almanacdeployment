@@ -1,8 +1,16 @@
-Docker-Compose Examples:
+Prerequisites:
+
+The SCRAL, Resource Catalogue and DFM require configuration files to run anything but 
+default values embedded into the builds. On the host you may place files as such:
+
+/almanac/
 
 // Start a docker session with VL and Mosquitto.
 // Special configuration can be done in the develop.yml file
-docker-compose -f docker-compose.yml -p almanac-lab up
+docker-compose -f docker-compose.yml -f docker-compose.develop.yml -p almanac-lab up
 
 // Tidy up images
-docker-compose -f docker-compose.yml -p almanac-lab rm
+docker-compose -f docker-compose.yml -f docker-compose.develop.yml -p almanac-lab rm
+
+On the LAB use this
+docker-compose -f docker-compose.yml -f docker-compose.lab.yml -p almanac-lab up
