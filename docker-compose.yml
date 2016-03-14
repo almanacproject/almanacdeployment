@@ -33,7 +33,7 @@ virtualizationlayer:
     - MQTT_BROKER_URL=mqtt://mosquitto/
     - VL_PUBLIC_URL=http://almanac-lab.alexandra.dk/
     - DFM_URL=http://datafusionmanager:8319/
-    - SCRAL_URL=http://scral:8081/scral/
+    - SCRAL_URL=http://scral:8080/scral/
     - RESOURCE_CATALOGUE_URL=http://resourcecatalogue:44441/
     - INSTANCE_NAME=ALMANAC-LAB
     - LOG_LEVEL=verbose
