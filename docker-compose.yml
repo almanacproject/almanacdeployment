@@ -3,25 +3,25 @@ mosquitto:
   ports:
     - "1883:1883"
 datafusionmanager:
-  image: glagnar/datafusionmanager:latest
+  image: almanacproject/datafusionmanager:latest
   links:
     - mosquitto
   ports:
     - "8319:8319"
 scral:
-  image: glagnar/scral:latest
+  image: almanacproject/scral:latest
   links:
     - mosquitto
   ports:
     - "8081:8080"
 resourcecatalogue:
-  image: glagnar/resourcecatalogue:latest
+  image: almanacproject/resourcecatalogue:latest
   ports:
     - "44441:44441"
   links:
     - mosquitto
 virtualizationlayer:
-  image: glagnar/virtualizationlayer:latest
+  image: almanacproject/virtualizationlayer:latest
   links:
     - mosquitto
     - datafusionmanager
