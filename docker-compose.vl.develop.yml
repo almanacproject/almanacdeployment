@@ -14,5 +14,5 @@ services:
       - INSTANCE_NAME=DEVELOPER
       - LOG_LEVEL=verbose
     volumes:
-    - ../Virtualizationlayer:/opt/prs/app
+    - ../VirtualizationLayer:/opt/prs/app
 
