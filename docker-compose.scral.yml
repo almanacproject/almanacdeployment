@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  scral:
+    restart: unless-stopped
+    image: almanacproject/scral:latest
+    ports:
+      - "8081:8080"
+    networks:
+      - almanacproject_backend
+networks:
+  almanacproject_backend:
+    external: true

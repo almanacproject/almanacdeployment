@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  scral:
+    volumes:
+      - ./almanac/scral/config:/config
+

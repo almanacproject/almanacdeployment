@@ -2,17 +2,25 @@ version: '2'
 
 services:
   virtualizationlayer:
+    restart: unless-stopped
     networks:
       - backend
       - frontend
     environment:
-      - MQTT_BROKER_URL=mqtt://mosquitto/
-      - VL_PUBLIC_URL=http://localhost/
-      - DFM_URL=http://datafusionmanager:8319/
-      - SCRAL_URL=http://scral:8080/scral/
-      - RESOURCE_CATALOGUE_URL=http://resourcecatalogue:44441/
-      - INSTANCE_NAME=DEVELOPER
-      - LOG_LEVEL=verbose
+      STORAGE_MANAGER_URL: http://queryapi:8087/
+      MQTT_BROKER_URL: mqtt://mosquitto/
+      VL_PUBLIC_URL: http://localhost/
+      DFM_URL: http://datafusionmanager:8319/
+      SCRAL_URL: http://scral:8080/scral/
+      RESOURCE_CATALOGUE_URL: http://resourcecatalogue:44441/
+      INSTANCE_NAME: DEVELOPER
+      LOG_LEVEL: verbose
+      REQUIRE_AUTHORIZATION: 'false'
+      REQUIRE_POLICY: 'false'
+      OPENID_PUBLIC_KEY: |-
+           -----BEGIN PUBLIC KEY-----
+           MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW+jK+xQU9a03GUnKHkkle+Q0pX/g6jXZ7r1/xAK5Do2kQ+X5xK9cipRgEKwIDAQAB
+           -----END PUBLIC KEY-----
     volumes:
     - ../VirtualizationLayer:/opt/prs/app
 

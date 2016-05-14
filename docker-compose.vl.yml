@@ -2,12 +2,14 @@ version: '2'
 
 services:
   mosquitto:
+    restart: unless-stopped
     image: ansi/mosquitto
     ports:
       - "1883:1883"
     networks:
       - backend
   virtualizationlayer:
+    restart: unless-stopped
     image: almanacproject/virtualizationlayer:latest
     ports:
       - "80:80"
