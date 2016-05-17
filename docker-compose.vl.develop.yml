@@ -2,10 +2,6 @@ version: '2'
 
 services:
   virtualizationlayer:
-    restart: unless-stopped
-    networks:
-      - backend
-      - frontend
     environment:
       STORAGE_MANAGER_URL: http://queryapi:8087/
       MQTT_BROKER_URL: mqtt://mosquitto/
