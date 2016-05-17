@@ -4,8 +4,8 @@ services:
   virtualizationlayer:
     environment:
       STORAGE_MANAGER_URL: http://queryapi:8087/
-      REQUIRE_AUTHORIZATION: 'false'
-      REQUIRE_POLICY: 'false'
+      REQUIRE_AUTHORIZATION: 'yes'
+      REQUIRE_POLICY: 'yes'
       OPENID_PUBLIC_KEY: |-
           -----BEGIN PUBLIC KEY-----
           MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdlatRjRjogo3WojgGHFHYLugdUWAY9iR3fy4arWNA1KoS8kVw33cJibXr8bvwUAUparCwlvdbH6dvEOfou0/gCFQsHUfQrSDv+MuSUMAe8jzKE4qW+jK+xQU9a03GUnKHkkle+Q0pX/g6jXZ7r1/xAK5Do2kQ+X5xK9cipRgEKwIDAQAB
