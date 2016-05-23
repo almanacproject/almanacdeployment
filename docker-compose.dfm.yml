@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  datafusionmanager:
+    restart: unless-stopped
+    image: almanacproject/datafusionmanager:latest
+    ports:
+      - "8319:8319"
+    networks:
+      - almanacproject_backend
+networks:
+  almanacproject_backend:
+    external: true
