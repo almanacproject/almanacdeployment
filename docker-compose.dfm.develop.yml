@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  datafusionmanager:
+    volumes:
+      - ./almanac/dfm/config:/config
+
