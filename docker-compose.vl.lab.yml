@@ -3,7 +3,7 @@ version: '2'
 services:
   virtualizationlayer:
     environment:
-      STORAGE_MANAGER_URL: http://queryapi:8087/
+      STORAGE_MANAGER_URL: http://ngix-queryapi/
       REQUIRE_AUTHORIZATION: 'no'
       REQUIRE_POLICY: 'no'
       OPENID_PUBLIC_KEY: |-
