@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  rc:
+    restart: unless-stopped
+    image: almanacproject/resourcecatalogue:latest
+    ports:
+      - "44441:44441"
+    networks:
+      - almanacproject_backend
+networks:
+  almanacproject_backend:
+    external: true
