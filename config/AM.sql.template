@@ -1,0 +1,8 @@
+CREATE DATABASE keypass;
+
+CREATE OR REPLACE USER 'AMpap'@'%' IDENTIFIED BY '$${psst.database_pap_pw}',
+                       'AMpdp'@'%' IDENTIFIED BY '$${psst.database_pdp_pw}';
+
+GRANT ALL ON *.* TO 'AMpap'@'%';
+GRANT SELECT ON keypass.* TO 'AMpdp'@'%';
+COMMIT;

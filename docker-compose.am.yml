@@ -1,0 +1,39 @@
+version: '2'
+services:
+  amdb:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: keypass
+    volumes:
+      - ./volumes/am/db/:/docker-entrypoint-initdb.d:ro
+    networks:
+      - am_subnet
+
+  ampap:
+    image: almanacproject/keypasspap
+    command: ["/opt/keypass/start"]
+    entrypoint: ["/opt/keypass/wait-for-it.sh", "amdb:3306", "--"]
+    depends_on:
+      - amdb
+    volumes:
+      - ./volumes/am/pap/:/opt/keypass/conf:ro
+    networks:
+      - almanacproject_backend
+      - am_subnet
+
+  ampdp:
+    image: almanacproject/keypasspdp
+    command: ["/opt/keypass/start"]
+    entrypoint: ["/opt/keypass/wait-for-it.sh", "amdb:3306", "--"]
+    depends_on:
+      - amdb
+    volumes:
+      - ./volumes/am/pdp/:/opt/keypass/conf:ro
+    networks:
+      - almanacproject_backend
+      - am_subnet
+networks:
+  almanacproject_backend:
+    external: true
+  am_subnet:
+    driver: bridge
