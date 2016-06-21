@@ -3,4 +3,5 @@ version: '2'
 services:
   resourcecatalogue:
     volumes:
-      - /almanac/resourcecatalogue/config:/config
+      - ./almanac/resourcecatalogue/config:/config
+

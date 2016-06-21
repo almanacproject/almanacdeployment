@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  rc:
+  resourcecatalogue:
     restart: unless-stopped
     image: almanacproject/resourcecatalogue:latest
     ports:
