@@ -1,20 +1,11 @@
 version: '2'
 
 services:
-  mosquitto:
-    restart: unless-stopped
-    image: ansi/mosquitto
-    ports:
-      - "1883:1883"
-    networks:
-      - backend
   virtualizationlayer:
     restart: unless-stopped
     image: almanacproject/virtualizationlayer:latest
     ports:
       - "80:80"
-    networks:
-      - backend
     environment:
       - MQTT_BROKER_URL=mqtt://mosquitto/
       - VL_PUBLIC_URL=http://almanac-lab.alexandra.dk/
@@ -23,7 +14,8 @@ services:
       - RESOURCE_CATALOGUE_URL=http://resourcecatalogue:44441/
       - INSTANCE_NAME=ALMANAC-LAB
       - LOG_LEVEL=verbose
-
+    networks:
+      - almanacproject_backend
 networks:
-  backend:
-    driver: bridge
+  almanacproject_backend:
+    external: true
