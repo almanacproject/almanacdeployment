@@ -2,6 +2,8 @@ version: '2'
 
 services:
   virtualizationlayer:
+    ports:
+      - "8082:80"
     environment:
       STORAGE_MANAGER_URL: http://ngix-queryapi/
       REQUIRE_AUTHORIZATION: 'no'

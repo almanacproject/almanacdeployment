@@ -2,6 +2,8 @@ version: '2'
 
 services:
   virtualizationlayer:
+    ports:
+      - "80:80"
     environment:
       STORAGE_MANAGER_URL: http://ngix-queryapi/
       MQTT_BROKER_URL: mqtt://mosquitto/

@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  ssl:
+    restart: unless-stopped
+    image: traefik
+    ports:
+      - "9090:9090"
+      - "80:80"
+      - "443:443"
+    networks:
+      - almanacproject_backend
+    volumes:
+      - /almanac/traefik/config/traefik.toml:/etc/traefik/traefik.toml
+      - /almanac/traefik/config/extra:/etc/traefik/extra
+      - /almanac/traefik/acme:/etc/traefik/acme
+networks:
+  almanacproject_backend:
+    external: true

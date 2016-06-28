@@ -4,8 +4,6 @@ services:
   virtualizationlayer:
     restart: unless-stopped
     image: almanacproject/virtualizationlayer:latest
-    ports:
-      - "80:80"
     environment:
       - MQTT_BROKER_URL=mqtt://mosquitto/
       - VL_PUBLIC_URL=http://almanac-lab.alexandra.dk/

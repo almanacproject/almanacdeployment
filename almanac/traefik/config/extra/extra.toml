@@ -1,7 +1,7 @@
 [backends]
   [backends.virtualizationlayer]
     [backends.virtualizationlayer.servers.server1]
-    url = "http://virtualizationlayer:8082"
+    url = "http://virtualizationlayer"
 
 [frontends]
   [frontends.virtualizationlayer]

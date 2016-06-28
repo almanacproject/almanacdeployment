@@ -17,7 +17,7 @@ defaultEntryPoints = ["http", "https"]
 address = ":9090"
 
 [acme]
-email = "thomas.gilbert@alexandra.dk
+email = "thomas.gilbert@alexandra.dk"
 storageFile = "/etc/traefik/acme/acme.json"
 onDemand = true
 caServer = "https://acme-staging.api.letsencrypt.org/directory"
