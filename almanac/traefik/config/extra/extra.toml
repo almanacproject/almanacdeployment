@@ -1,0 +1,10 @@
+[backends]
+  [backends.virtualizationlayer]
+    [backends.virtualizationlayer.servers.server1]
+    url = "http://virtualizationlayer:8082"
+
+[frontends]
+  [frontends.virtualizationlayer]
+  backend = "virtualizationlayer"
+    [frontends.virtualizationlayer.routes.virtualizationlayer]
+    rule = "Host:almanac-lab.alexandra.dk"
