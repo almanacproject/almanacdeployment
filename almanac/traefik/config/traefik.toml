@@ -1,0 +1,33 @@
+logLevel = "DEBUG"
+defaultEntryPoints = ["http", "https"]
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+      # certs used as default certs
+      #[[entryPoints.https.tls.certificates]]
+      #certFile = "/etc/traefik/certificates/traefik.crt"
+      #keyFile = "/etc/traefik/certificates/traefik.key"
+
+[web]
+address = ":9090"
+
+[acme]
+email = "thomas.gilbert@alexandra.dk
+storageFile = "/etc/traefik/acme/acme.json"
+onDemand = true
+caServer = "https://acme-staging.api.letsencrypt.org/directory"
+entryPoint = "https"
+
+[[acme.domains]]
+  main = "alexandra.dk"
+  sans = ["almanac.alexandra.dk", "almanac-lab.alexandra.dk"]
+
+[file]
+filename = "/etc/traefik/extra/extra.toml"
+watch = true
+
