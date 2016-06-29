@@ -1,0 +1,30 @@
+version: '2'
+
+
+services:
+ rabbit:
+   networks:
+      - almanacproject_backend
+ mongo:
+   networks:
+      - almanacproject_backend
+   volumes:
+      - /almanac/storagemanager/data:/data/db
+ receiver:
+   networks:
+      - almanacproject_backend
+   environment:
+     - SM_REC_MqttServerAddress=mosquitto
+ archiver:
+   networks:
+      - almanacproject_backend
+ ngix-queryapi:
+   networks:
+      - almanacproject_backend
+ queryapi:
+   networks:
+      - almanacproject_backend
+
+networks:
+  almanacproject_backend:
+    external: true

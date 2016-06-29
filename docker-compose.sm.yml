@@ -1,0 +1,66 @@
+################################################################
+# Docker compose file for Storage Manager components
+# smqueryapi has unresolved issue on mono, ASP.NET OwinSelfHost 5.2.3
+# requests work but response is always 500 
+################################################################
+version: '2'
+
+services:
+ rabbit:
+   image: rabbitmq:3-management
+   restart: unless-stopped
+   ports:
+     - "5672:5672"
+   environment:
+     - RABBITMQ_DEFAULT_PASS=hemligt11_50
+     - RABBITMQ_DEFAULT_USER=sm_user
+ mongo:
+   image: mongo:3.0.6
+   restart: unless-stopped
+   ports:
+     - "27017:27017"
+   command: --smallfiles --rest
+ receiver:
+   image: almanacproject/smreceiver
+   restart: unless-stopped
+   links:
+     - rabbit
+   environment:
+     - SM_REC_MqttServerAddress=almanac.alexandra.dk
+     - SM_REC_AmqpServerUri=amqp://sm_user:hemligt11_50@rabbit/
+     - SM_REC_MqttObservationSubscriptionString=/+/+/v2/observation/#
+     - SM_REC_StartUpDelaySeconds=15
+ archiver:
+   image: almanacproject/smarchiver
+   restart: unless-stopped
+   links:
+     - rabbit
+     - mongo
+   environment:
+     - SM_ARC_AmqpServerUri=amqp://sm_user:hemligt11_50@rabbit/
+     - SM_ARC_DbConnectionString=mongodb://mongo
+     - SM_ARC_Database=ALMANAC_Y2_1
+     - SM_ARC_LogEventsToConsole=True
+     - SM_ARC_StartUpDelaySeconds=15
+ ngix-queryapi:
+   image: almanacproject/ngix-proxy-smqueryapi
+   restart: unless-stopped
+   ports:
+     - "8087:80"
+   links:
+     - queryapi:webapp
+ queryapi:
+    image: almanacproject/smqueryopenapi
+    restart: unless-stopped
+    expose:
+     - "8087"
+    ports:
+     - "5000:8087"
+    links:
+      - mongo
+    environment:
+      - SM_QUERY_HOST=*
+      - SM_QUERY_PORT=8087
+      - SM_QUERY_DBCONNECTIONSTRING=mongodb://mongo
+      - SM_QUERY_DATABASE=ALMANAC_Y2_1
+      - SM_QUERY_STARTUPDELAYSECONDS=15
