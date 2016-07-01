@@ -4,6 +4,11 @@ services:
   ssl:
     restart: unless-stopped
     image: traefik
+    logging:
+      driver: json-file
+      options:
+         max-size: "1g"
+         max-file: "5"
     ports:
       - "9090:9090"
       - "80:80"

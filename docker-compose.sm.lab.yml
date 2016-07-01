@@ -1,29 +1,58 @@
 version: '2'
 
-
 services:
  rabbit:
    networks:
       - almanacproject_backend
+   logging:
+     driver: json-file
+     options:
+        max-size: "1g"
+        max-file: "5"
  mongo:
    networks:
       - almanacproject_backend
    volumes:
       - /almanac/storagemanager/data:/data/db
+   logging:
+     driver: json-file
+     options:
+        max-size: "1g"
+        max-file: "5"
  receiver:
    networks:
       - almanacproject_backend
    environment:
      - SM_REC_MqttServerAddress=mosquitto
+   logging:
+     driver: json-file
+     options:
+        max-size: "1g"
+        max-file: "5"
  archiver:
    networks:
       - almanacproject_backend
+   logging:
+     driver: json-file
+     options:
+        max-size: "1g"
+        max-file: "5"
  ngix-queryapi:
    networks:
       - almanacproject_backend
+   logging:
+     driver: json-file
+     options:
+        max-size: "1g"
+        max-file: "5"
  queryapi:
    networks:
       - almanacproject_backend
+   logging:
+     driver: json-file
+     options:
+        max-size: "1g"
+        max-file: "5"
 
 networks:
   almanacproject_backend:

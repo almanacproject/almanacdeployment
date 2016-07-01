@@ -4,3 +4,8 @@ services:
   resourcecatalogue:
     volumes:
       - /almanac/resourcecatalogue/config:/config
+    logging:
+      driver: json-file
+      options:
+         max-size: "1g"
+         max-file: "5"

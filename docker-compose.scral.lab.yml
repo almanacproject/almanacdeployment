@@ -4,3 +4,8 @@ services:
   scral:
     volumes:
       - /almanac/scral/config:/config
+    logging:
+      driver: json-file
+      options:
+         max-size: "1g"
+         max-file: "5"
