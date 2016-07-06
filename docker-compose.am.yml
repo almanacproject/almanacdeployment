@@ -7,6 +7,11 @@ services:
       MYSQL_ROOT_PASSWORD: keypass
     volumes:
       - ./volumes/am/db/:/docker-entrypoint-initdb.d:ro
+    logging:
+      driver: json-file
+      options:
+         max-size: "1g"
+         max-file: "5"
     networks:
       - am_subnet
 
@@ -19,6 +24,11 @@ services:
       - amdb
     volumes:
       - ./volumes/am/pap/:/opt/keypass/conf:ro
+    logging:
+      driver: json-file
+      options:
+         max-size: "1g"
+         max-file: "5"
     networks:
       - almanacproject_backend
       - am_subnet
@@ -32,6 +42,11 @@ services:
       - amdb
     volumes:
       - ./volumes/am/pdp/:/opt/keypass/conf:ro
+    logging:
+      driver: json-file
+      options:
+         max-size: "1g"
+         max-file: "5"
     networks:
       - almanacproject_backend
       - am_subnet

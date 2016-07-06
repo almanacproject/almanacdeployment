@@ -1,0 +1,13 @@
+version: '2'
+services:
+  amdb:
+    volumes:
+      - /almanac/certificates/config/am/db/:/docker-entrypoint-initdb.d:ro
+
+  ampap:
+    volumes:
+      - /almanac/certificates/config/am/pap/:/opt/keypass/conf:ro
+
+  ampdp:
+    volumes:
+      - /almanac/certificates/config/am/pdp/:/opt/keypass/conf:ro

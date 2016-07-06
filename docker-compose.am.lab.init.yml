@@ -1,0 +1,4 @@
+version: '2'
+services:
+  am_init:
+      - /almanac/certificates/config/am/:/opt/volumes
