@@ -1,0 +1,10 @@
+version: '2'
+services:
+  am_init:
+    image: almanacproject/aminit
+    volumes:
+      - ./almanac/amconfig/am.json:/opt/input/config.json:ro
+      - ./almanac/amconfig/am_pap.yml.template:/opt/input/pap/config.yml.template:ro
+      - ./almanac/amconfig/am_pdp.yml.template:/opt/input/pdp/config.yml.template:ro
+      - ./almanac/amconfig/AM.sql.template:/opt/input/db/AM.sql.template:ro
+      - ./volumes/:/opt/volumes

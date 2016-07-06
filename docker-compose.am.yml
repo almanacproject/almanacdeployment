@@ -2,6 +2,7 @@ version: '2'
 services:
   amdb:
     image: mariadb
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: keypass
     volumes:
@@ -11,6 +12,7 @@ services:
 
   ampap:
     image: almanacproject/keypasspap
+    restart: unless-stopped
     command: ["/opt/keypass/start"]
     entrypoint: ["/opt/keypass/wait-for-it.sh", "amdb:3306", "--"]
     depends_on:
@@ -23,6 +25,7 @@ services:
 
   ampdp:
     image: almanacproject/keypasspdp
+    restart: unless-stopped
     command: ["/opt/keypass/start"]
     entrypoint: ["/opt/keypass/wait-for-it.sh", "amdb:3306", "--"]
     depends_on:
