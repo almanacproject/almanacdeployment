@@ -1,5 +1,6 @@
 # ALMANAC Deployment
-Contains docker compose files and default configuration files/examples
+Contains docker compose files and default configuration files/examples.
+Also contains work for the ALMANAC-LAB
 
 To get started do one of two things:
 
